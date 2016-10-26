@@ -1,0 +1,17 @@
+*.py[cod]
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+tmp/*
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+.idea/*
+
+# Virtual environment
+venv
+
