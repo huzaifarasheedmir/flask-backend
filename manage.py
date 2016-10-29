@@ -7,20 +7,24 @@ if os.environ.get('FLASK_COVERAGE'):
     COV = coverage.coverage(branch=True, include='app/*')
     COV.start()
 
+from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.script import Manager, Server, Shell
 
-from app import create_app
+from app import create_app, db, models
+from config import config
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 manager = Manager(app)
+migrate = Migrate(app, db)
 
 
 def make_shell_context():
-    return dict(app=app)
+    return dict(app=app, models=models, db=db)
 
 
-manager.add_command("runserver", Server(host="0.0.0.0", port=8080))
+manager.add_command("runserver", Server(host="0.0.0.0", port=config[os.getenv('FLASK_CONFIG') or 'default'].PORT))
 manager.add_command("shell", Shell(make_context=make_shell_context))
+manager.add_command('db', MigrateCommand)
 
 
 @manager.command
@@ -44,6 +48,15 @@ def test(coverage=False):
         COV.html_report(directory=covdir)
         print('HTML version: file://%s/index.html' % covdir)
         COV.erase()
+
+
+@manager.command
+def deploy():
+    """Run deployment tasks."""
+    from flask_migrate import upgrade
+
+    # migrate database to latest revision
+    upgrade()
 
 
 if __name__ == '__main__':

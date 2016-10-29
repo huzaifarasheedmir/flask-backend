@@ -31,7 +31,8 @@ git reset --hard <commit id>
 
 | Commit # |    Commit titile               | Commit id |
 |------|---------------------------|---------|
-| 1  | Setup basic app structure|[HEAD](https://github.com/huzaifarasheedmir/flask-backend/commit/HEAD)|
+| 1  | Setup basic app structure|[0101924667b75e45ba1a6f9cd2e0cf1124a996c3](https://github.com/huzaifarasheedmir/flask-backend/commit/0101924667b75e45ba1a6f9cd2e0cf1124a996c3)|
+| 2  | Introduce db in app and create user model|[HEAD](https://github.com/huzaifarasheedmir/flask-backend/commit/HEAD)|
 
 ## Getting started
 
