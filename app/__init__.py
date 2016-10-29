@@ -14,7 +14,7 @@ def create_app(config_name):
 
     db.init_app(app)
 
-    from app.orders import orders as orders_blueprint
-    app.register_blueprint(orders_blueprint, url_prefix='/v1.0')
+    from app.users import users as users_blueprint
+    app.register_blueprint(users_blueprint, url_prefix='/v1.0/users')
 
     return app
