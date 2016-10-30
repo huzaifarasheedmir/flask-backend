@@ -50,6 +50,17 @@ class TestUser(unittest.TestCase):
 
         self.assertEqual(response.status_code, 409)
 
+    def test_register_400(self):
+        """Ensure user register payload is invalid"""
+
+        body = json.dumps({"name": 2, "email": "abcd@xyz.com"})
+
+        response = self.client.post(url_for('users.register_user'),
+                                    data=body,
+                                    headers=self.headers)
+
+        self.assertEqual(response.status_code, 400)
+
     def test_login_200(self):
         """Ensure user is authorized"""
 
@@ -80,6 +91,16 @@ class TestUser(unittest.TestCase):
                                     data=body,
                                     headers=self.headers)
         self.assertEqual(response.status_code, 404)
+
+    def test_login_400(self):
+        """Ensure user to login payload is invalid"""
+
+        body = json.dumps({"email": "abcde@xyz.com", "abc": "invalid"})
+
+        response = self.client.post(url_for('users.login_user'),
+                                    data=body,
+                                    headers=self.headers)
+        self.assertEqual(response.status_code, 400)
 
     def test_get_200(self):
         """Ensure a user exists"""
@@ -120,3 +141,14 @@ class TestUser(unittest.TestCase):
                                      headers=self.headers)
 
         self.assertEqual(response.status_code, 404)
+
+    def test_update_400(self):
+        """Ensure a user to update payload is invalid"""
+
+        body = json.dumps({"abc": "test_name"})
+
+        response = self.client.patch(url_for('users.update_user', user_id=self.user.id),
+                                     data=body,
+                                     headers=self.headers)
+
+        self.assertEqual(response.status_code, 400)

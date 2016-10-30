@@ -5,9 +5,12 @@ from sqlalchemy.exc import IntegrityError
 
 from app.models import User
 from app.users import users
+from app.decorators import validate_schema
+from schema import register_user, login_user, update_user
 
 
 @users.route('/register', methods=['POST'])
+@validate_schema(register_user)
 def register_user():
     """Create a user"""
 
@@ -28,6 +31,7 @@ def register_user():
 
 
 @users.route('/login', methods=['POST'])
+@validate_schema(login_user)
 def login_user():
     """Login a user"""
 
@@ -46,6 +50,7 @@ def login_user():
 
 
 @users.route('/<user_id>', methods=['PATCH'])
+@validate_schema(update_user)
 def update_user(user_id):
     """Update a user"""
 
@@ -74,4 +79,3 @@ def get_user(user_id):
     resp = jsonify(user.to_json())
     resp.status_code = 200
     return resp
-

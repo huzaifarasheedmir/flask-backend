@@ -33,8 +33,8 @@ git reset --hard <commit id>
 |------|---------------------------|---------|
 | 1  | [Setup basic app structure](https://github.com/huzaifarasheedmir/flask-backend/commit/0101924667b75e45ba1a6f9cd2e0cf1124a996c3)|0101924667b75e45ba1a6f9cd2e0cf1124a996c3|
 | 2  | [Introduce db in app and create user model](https://github.com/huzaifarasheedmir/flask-backend/commit/316c330367bf388215ff1e91c1fd9c720ddbd4ef)|316c330367bf388215ff1e91c1fd9c720ddbd4ef|
-| 3  | [Introduce basic user apis in app](https://github.com/huzaifarasheedmir/flask-backend/commit/HEAD)|HEAD|
-
+| 3  | [Introduce basic user apis in app](https://github.com/huzaifarasheedmir/flask-backend/commit/28b60c078957b70c50310d00845c0e65ac734e6f)|28b60c078957b70c50310d00845c0e65ac734e6f|
+| 4  | [Add schema validation in apis](https://github.com/huzaifarasheedmir/flask-backend/commit/HEAD)|HEAD|
 ## Getting started
 
 1. Install python package management tool pip
