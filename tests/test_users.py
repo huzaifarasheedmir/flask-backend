@@ -35,7 +35,7 @@ class TestUser(unittest.TestCase):
                                     data=body,
                                     headers=self.headers)
 
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 200)
         response_json = json.loads(response.data.decode('utf-8'))
         self.assertEquals(response_json, {"name": "abc", "email": "abc@xyz.com", "id": response_json['id']})
 
