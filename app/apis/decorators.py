@@ -1,10 +1,19 @@
+"""
+Validations and authentication decorators for all APIs
+"""
+
 from flask import abort, request
 from functools import wraps
 from jsonschema import validate, ValidationError
 
 
 def validate_schema(schema):
-    """Validate request payload"""
+    """Validate request payload
+    :param schema: dict containing the payload definition
+    :type schema: dict
+
+    :return 400 Response if payload is invalid
+    """
 
     def decorator(func):
         @wraps(func)

@@ -1,17 +1,17 @@
 import os
 
+from flask.ext.migrate import Migrate, MigrateCommand
+from flask.ext.script import Manager, Server, Shell
+
+from app import create_app, db, models
+from config import config
+
 COV = None
 if os.environ.get('FLASK_COVERAGE'):
     import coverage
 
     COV = coverage.coverage(branch=True, include='app/*')
     COV.start()
-
-from flask.ext.migrate import Migrate, MigrateCommand
-from flask.ext.script import Manager, Server, Shell
-
-from app import create_app, db, models
-from config import config
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 manager = Manager(app)

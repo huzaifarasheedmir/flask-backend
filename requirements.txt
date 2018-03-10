@@ -9,3 +9,4 @@ SQLAlchemy==1.0.12
 Flask-SQLAlchemy==2.1
 Werkzeug==0.10.4
 jsonschema==2.5.1
+pyYaml==3.12

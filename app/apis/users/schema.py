@@ -1,3 +1,7 @@
+"""
+Schema definition for users APIs request payload
+"""
+
 register_user = {
     "type": "object",
     "properties": {

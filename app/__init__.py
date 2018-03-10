@@ -14,7 +14,7 @@ def create_app(config_name):
 
     db.init_app(app)
 
-    from app.users import users as users_blueprint
+    from app.apis.users import users as users_blueprint
     app.register_blueprint(users_blueprint, url_prefix='/v1.0/users')
 
     return app

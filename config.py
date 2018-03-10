@@ -1,6 +1,6 @@
 import os
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
@@ -33,6 +33,7 @@ class TestingConfig(Config):
     TESTING = True
     PORT = 1000
     SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
+    FIXTURES_DIR = os.path.join(BASE_DIR, 'tests/fixtures')
 
 
 class ProductionConfig(Config):
